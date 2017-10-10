@@ -28,10 +28,6 @@ public class Seat implements Serializable {
 	private BigDecimal price;
 	
 	@ManyToOne
-	@JoinColumn(name = "flight_id")
-	private Flight flight;
-	
-	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
@@ -53,14 +49,6 @@ public class Seat implements Serializable {
 
 	public void setNumber(String number) {
 		this.number = number;
-	}
-
-	public Flight getFlight() {
-		return flight;
-	}
-
-	public void setFlight(Flight flight) {
-		this.flight = flight;
 	}
 
 	public BigDecimal getPrice() {
