@@ -19,9 +19,12 @@ import com.easytravel.model.entities.User;
 import com.easytravel.model.repositories.Seats;
 import com.easytravel.model.repositories.Users;
 
-@Path("seats")
+import io.swagger.annotations.Api;
+
+@Path("/easytravel/seats")
 @Produces({ MediaType.APPLICATION_JSON })
 @Component
+@Api(value = "Seats services", produces = "application/json")
 public class SeatService {
 	
 	@Autowired
@@ -32,7 +35,7 @@ public class SeatService {
 	@GET
 	public List<Seat> listAvailableSeats () {
 		
-		return seatsRepository.findByUserIsNull();
+		return seatsRepository.findByUserIsNullOrderByNumber();
 	}
 	
 	@GET
@@ -47,6 +50,12 @@ public class SeatService {
 	public Seat book ( @QueryParam("seatNumber") String number, @QueryParam("userName") String name ) {
 		
 		final Seat seat = seatsRepository.findByNumber(number);
+		
+		if ( seat.getUser() != null ) {
+			// doesn't change the seat if it is already booked
+			return seat;
+		}
+		
 		final User user = usersRepository.findByName(name);
 		
 		seat.setUser(user);
@@ -59,6 +68,12 @@ public class SeatService {
 	public Seat cancel ( @QueryParam("seatNumber") String number ) {
 		
 		final Seat seat = seatsRepository.findByNumber(number);
+		
+		if ( seat.getUser() == null ) {
+			// doesn't change the seat if it is already available
+			return seat;
+		}
+		
 		seat.setUser(null);
 		
 		return seatsRepository.saveAndFlush(seat);

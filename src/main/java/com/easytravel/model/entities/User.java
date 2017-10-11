@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="et_user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 6826406308161965874L;

@@ -8,6 +8,6 @@ import com.easytravel.model.entities.Seat;
 
 public interface Seats extends JpaRepository<Seat, Long> {
 	
-	List<Seat> findByUserIsNull();
+	List<Seat> findByUserIsNullOrderByNumber();
 	Seat findByNumber(String number);
 }

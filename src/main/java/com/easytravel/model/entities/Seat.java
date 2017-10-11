@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="et_seat")
 public class Seat implements Serializable {
 
 	private static final long serialVersionUID = 4665193242261940678L;
