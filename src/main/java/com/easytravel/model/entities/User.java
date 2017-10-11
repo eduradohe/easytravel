@@ -9,8 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="et_user")
+@ApiModel(value="User", description="Model class for User")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 6826406308161965874L;
@@ -27,6 +31,7 @@ public class User implements Serializable {
 		super();
 	}
 
+	@ApiModelProperty(value="Row PK in database")
 	public Long getId() {
 		return id;
 	}
@@ -35,6 +40,7 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
+	@ApiModelProperty(value="User name")
 	public String getName() {
 		return name;
 	}
@@ -43,6 +49,7 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
+	@ApiModelProperty(value="User e-mail")
 	public String getEmail() {
 		return email;
 	}

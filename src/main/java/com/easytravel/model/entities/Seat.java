@@ -12,8 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="et_seat")
+@ApiModel(value="Seat", description="Model class for Seat")
 public class Seat implements Serializable {
 
 	private static final long serialVersionUID = 4665193242261940678L;
@@ -34,7 +38,8 @@ public class Seat implements Serializable {
 	public Seat() {
 		super();
 	}
-
+	
+	@ApiModelProperty(value="Row PK in database")
 	public Long getId() {
 		return id;
 	}
@@ -43,6 +48,7 @@ public class Seat implements Serializable {
 		this.id = id;
 	}
 
+	@ApiModelProperty(value="Number of the Seat", allowableValues="1a, 1b, 1c, 1d, 2a, 2b, 2c, 2d, 3a, 3b, 3c, 3d")
 	public String getNumber() {
 		return number;
 	}
@@ -51,6 +57,7 @@ public class Seat implements Serializable {
 		this.number = number;
 	}
 
+	@ApiModelProperty(value="Seat price")
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -59,6 +66,7 @@ public class Seat implements Serializable {
 		this.price = price;
 	}
 
+	@ApiModelProperty(value="User to whom the Seat is booked", allowableValues="User object if the seat is booked, null if otherwise")
 	public User getUser() {
 		return user;
 	}

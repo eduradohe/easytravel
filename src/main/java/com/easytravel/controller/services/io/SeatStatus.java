@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import com.easytravel.model.entities.Seat;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="SeatStatus", description="Class defining the status of a Seat")
 public class SeatStatus implements Serializable {
 	
 	private static final long serialVersionUID = 6430574461941740884L;
@@ -17,11 +21,13 @@ public class SeatStatus implements Serializable {
 			this.availability = ( seat.getUser() == null ? "Available" : "Unavailable" );
 		}
 	}
-
+	
+	@ApiModelProperty(value="Number of a Seat", allowableValues="1a, 1b, 1c, 1d, 2a, 2b, 2c, 2d, 3a, 3b, 3c, 3d")
 	public String getNumber() {
 		return number;
 	}
-
+	
+	@ApiModelProperty(value="Status of the Seat", allowableValues="'Unavailable' if the Seat is booked, 'Available' otherwise")
 	public String getAvailability() {
 		return availability;
 	}
