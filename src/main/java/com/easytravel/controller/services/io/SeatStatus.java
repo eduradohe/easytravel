@@ -1,6 +1,7 @@
 package com.easytravel.controller.services.io;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.easytravel.model.entities.Seat;
 
@@ -13,11 +14,13 @@ public class SeatStatus implements Serializable {
 	private static final long serialVersionUID = 6430574461941740884L;
 	
 	private String number;
+	private BigDecimal price;
 	private String availability;
 	
 	public SeatStatus ( final Seat seat ) {
 		if ( seat != null ) { 
 			this.number = seat.getNumber();
+			this.price = seat.getPrice();
 			this.availability = ( seat.getUser() == null ? "Available" : "Unavailable" );
 		}
 	}
@@ -30,5 +33,10 @@ public class SeatStatus implements Serializable {
 	@ApiModelProperty(value="Status of the Seat", allowableValues="'Unavailable' if the Seat is booked, 'Available' otherwise")
 	public String getAvailability() {
 		return availability;
+	}
+	
+	@ApiModelProperty(value="Price of the Seat")
+	public BigDecimal getPrice() {
+		return price;
 	}
 }
