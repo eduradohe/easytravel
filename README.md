@@ -5,13 +5,15 @@ This application provide RESTful API Services to manage seats on a plane. The sy
 
 ---
 ## Is the project running anywhere?
-**Yes!** The project is deployed on Heroku. You can access its Swagger documentation on https://easytravel-api.herokuapp.com/
+**Yes!** The project is deployed on Heroku. You can access its Swagger documentation on http://easytravel-api.herokuapp.com/ (make sure to use http and **NOT** https).
 
-All documentation can be seen on above URL, although the "Try it!" feature is unavailable due to the fact that Heroku uses AWS, which custom Authorizers do not support returning headers, hence causing an issue of not displaying the response correctly within the Swagger page (it shows TypeError: Failed to fetch).
+All documentation can be seen on above URL, although the "Try it!" feature is unavailable while accessing above URL with https (so, I repeat: **do not use https** :) ).
 
-### How to test the API then?
+### How to test the API?
 
-I suggest using [Postman for Google Chrome](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop), although you can use any other tool of your choice.
+As said before, you can use the 'Try it!' feature on Swagger UI exposed on http://easytravel-api.herokuapp.com/
+
+If on the other hand you want to use a more oldschool approach, I suggest using [Postman for Google Chrome](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop), although you can really use any other tool of your choice (like curl, be my guest).
 
 As you can see on Swagger, there are 4 operations under Seat services.
 
@@ -23,14 +25,14 @@ Then, if we want to book seat '1a' to some user like John Doe, we can send a PUT
 
 You can then check again the seat status and note that it's Unavailable this time. Also, if you send a GET HTTP request to http://easytravel-api.herokuapp.com/api/easytravel/seats you may notice the seat 1a is no longer listed, for it is no longer available for booking.
 
-But don't panick! We can cancel the booking by sending another PUT HTTP request to http://easytravel-api.herokuapp.com/api/easytravel/seats/cancel?seatNumber=1a and it will return the seat information after its booking is cancelled.
+But don't panic! We can cancel the booking by sending another PUT HTTP request to http://easytravel-api.herokuapp.com/api/easytravel/seats/cancel?seatNumber=1a and it will return the seat information after its booking is cancelled.
 
 Then you can check the seat again to see its status back to Available, and also check the seats list and notice the seat 1a is being listed back again.
 
 ---
 ## Running locally
 
-If you want to use all Swagger features you can also run this project on any local machine by following the below steps:
+You can also run this project on any local machine, if you want, by following the below steps:
 
 1. Make sure you have Java 8 and Maven installed
 2. Download the zip or clone this repository
